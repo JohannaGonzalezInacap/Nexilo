@@ -20,7 +20,7 @@
   <header class="header">
     <div class="container header-content">
       <div class="logo">
-        <h1>NombreEmpresa</h1>
+        <h1>Nexilo SpA</h1>
       </div>
 
       <nav class="nav">
@@ -45,6 +45,27 @@
       <a href="#contacto" class="btn-primary">Solicitar Cotización</a>
     </div>
   </section>
+
+  <!-- ===============NOSOTROS================ -->
+   <section id="about" class="about">
+  <div class="about-container">
+
+    <div class="about-text">
+      <h2>Who We Are</h2>
+      <p>
+        Nexilo Global Tech provides integrated technological solutions in
+        security, access control, energy and intelligent infrastructure
+        for residential and corporate projects.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img src="img/nexilo-reference.jpg" alt="Nexilo Global Tech identity">
+    </div>
+
+  </div>
+</section>
+
 
   <!-- ================= SERVICIOS ================= -->
   <section id="servicios" class="servicios">
@@ -126,30 +147,89 @@
       <div class="contacto-grid">
 
         <div class="contacto-info">
-          <p><strong>Teléfono:</strong> +56 9 1234 5678</p>
-          <p><strong>Email:</strong> contacto@empresa.cl</p>
+          <p><strong>Teléfono:</strong> +56 9 6432 9851</p>
+          <p><strong>Email:</strong> contacto@nexilo.cl</p>
           <p><strong>Dirección:</strong> Santiago, Chile</p>
         </div>
 
-        <form class="contacto-form">
-          <input type="text" placeholder="Nombre" required />
-          <input type="email" placeholder="Correo" required />
-          <textarea placeholder="Mensaje" required></textarea>
-          <button type="submit" class="btn-primary">Enviar Mensaje</button>
-        </form>
+       <form class="contacto-form" id="form-whatsapp">
+
+  <input type="text" name="nombre" placeholder="Nombre completo" required />
+
+  <input type="email" name="email" placeholder="Correo electrónico" required />
+
+  <input type="tel" name="telefono" placeholder="Teléfono (opcional)" />
+
+  <select name="servicio" required>
+    <option value="">Servicio de interés</option>
+    <option>CCTV</option>
+    <option>Control de Acceso</option>
+    <option>Alarmas de Incendio</option>
+    <option>Alarmas de Intrusión</option>
+    <option>Citofonía</option>
+    <option>Cercos Eléctricos</option>
+    <option>Portones Automáticos</option>
+    <option>Sala Eléctrica</option>
+    <option>Grupo Electrógeno</option>
+  </select>
+
+  <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+
+  <button type="submit" class="btn-primary">Enviar Mensaje</button>
+</form>
+
 
       </div>
     </div>
   </section>
+<p id="form-success" class="form-success">
+  Gracias por contactarnos. Te responderemos a la brevedad.
+</p>
+
 
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="container footer-content">
-      <p>© 2026 NombreEmpresa. Todos los derechos reservados.</p>
+      <p>© 2026 . Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <!-- JS -->
-  <script src="js/main.js"></script>
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("form-whatsapp");
+    const successMessage = document.getElementById("form-success");
+
+    if (!form) return;
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nombre = document.querySelector('input[name="nombre"]').value;
+      const email = document.querySelector('input[name="email"]').value;
+      const telefono = document.querySelector('input[name="telefono"]').value;
+      const servicio = document.querySelector('select[name="servicio"]').value;
+      const mensaje = document.querySelector('textarea[name="mensaje"]').value;
+
+      const texto =
+        `Hola, soy ${nombre}%0A` +
+        `Email: ${email}%0A` +
+        `Teléfono: ${telefono}%0A` +
+        `Servicio: ${servicio}%0A` +
+        `Mensaje: ${mensaje}`;
+
+      const numeroWhatsApp = "56964329851";
+      const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
+
+      window.open(url, "_blank");
+
+      successMessage.style.display = "block";
+      form.reset();
+    });
+  });
+</script>
+
+
+
 </body>
 </html>
