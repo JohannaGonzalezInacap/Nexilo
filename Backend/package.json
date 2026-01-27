@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup:env": "node -e \"const fs=require('fs');const src='.env.example';const dst='.env';if(!fs.existsSync(dst)){fs.copyFileSync(src,dst);console.log('Created .env from .env.example');}else{console.log('.env already exists');}\"",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.2.3",
