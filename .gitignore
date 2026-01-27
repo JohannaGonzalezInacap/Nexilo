@@ -1,0 +1,14 @@
+# Dependencias locales
+node_modules/
+Backend/node_modules/
+FrontEnd/node_modules/
+
+# Entornos
+.env
+.env.local
+.env.*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
